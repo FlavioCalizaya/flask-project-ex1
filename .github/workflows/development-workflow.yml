@@ -51,14 +51,14 @@ jobs:
           USER_NAME : "ubuntu"
           USER_PASSWORD: ""
           APP_DIR: ${{secrets.APP_DIR}}
-          SERVICE_NAME: ${{secrets.SERVICE_NAME}}
+          SERVICE_NAME: "gunicorn"
 
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} "
             cd ${APP_DIR} &&
             git pull &&
-            echo ${USER_PASSWORD} | sudo -S systemctl restart ${SERVICE_NAME} "
+            sudo -S systemctl restart ${SERVICE_NAME} "
   Test-Remote:
     name: Test Remote Deployment
     needs: [DeployDev]
