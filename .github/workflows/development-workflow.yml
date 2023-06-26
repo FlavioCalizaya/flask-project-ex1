@@ -47,9 +47,9 @@ jobs:
       - name: Deploy in EC2
         env:
           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-          HOST_NAME : ${{ secrets.HOST_NAME  }}
+          HOST_NAME : 3.15.139.197
           USER_NAME : ${{ secrets.USER_NAME  }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          USER_PASSWORD: ""
           APP_DIR: ${{secrets.APP_DIR}}
           SERVICE_NAME: ${{secrets.SERVICE_NAME}}
 
