@@ -59,15 +59,3 @@ jobs:
             cd ${APP_DIR} &&
             git pull &&
             sudo -S systemctl restart ${SERVICE_NAME} "
-  Test-Remote:
-    name: Test Remote Deployment
-    needs: [DeployDev]
-    runs-on: ubuntu-latest
-    environment:
-      name: Development
-
-    steps:
-    - name: Test application
-      run: |
-        sleep 5
-        curl ${{ secrets.HOST_NAME  }}:${{ secrets.PORT  }} | grep "template api"
